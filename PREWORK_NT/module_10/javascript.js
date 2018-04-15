@@ -1,12 +1,14 @@
 const buttons = Array.from(document.getElementsByTagName('button'));
+const box = document.getElementById("box");
+
 const cssRules = {
   1 : {
-    "style" : "font-size",
-    "value" : "1.4em"
+    "style" : "transform",
+    "value" : "scale(2,1)"
   },
 
   2 : {
-    "style" : "color",
+    "style" : "background-color",
     "value" : "blue"
   },
 
@@ -25,6 +27,7 @@ const cssRules = {
 
 function reset(btn,index){
   if(index < 4) {
+    box.style[cssRules[index + 1]["style"]] = "1";
     btn.style[cssRules[index + 1]["style"]] = "";
   }
 }
@@ -40,7 +43,8 @@ function addEvents(btnArray) {
         var key = this.id.slice(-1);
         var cssRule = cssRules[key].style;
         var cssVal = cssRules[key].value;
-        val.style[cssRule] = cssVal;
+        box.style[cssRule] = cssVal;
+        console.log(cssVal,box)
       }
     })
   });
